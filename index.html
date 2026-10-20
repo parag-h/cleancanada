@@ -1,0 +1,1067 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5, user-scalable=yes">
+  <title>MapleClean | Canadian Cleaning Co.</title>
+  <!-- Font Awesome 6 (free) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- Google Fonts: Inter + Playfair Display for elegant feel -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* ---------- RESET & BASE ---------- */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #fbfbfd;
+      color: #1e2b37;
+      line-height: 1.5;
+      scroll-behavior: smooth;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ---------- COLOR PALETTE (Canadian Inspired) ---------- */
+    :root {
+      --maple-red: #d92b2b;
+      --maple-red-dark: #b01e1e;
+      --deep-navy: #0d2c3e;
+      --ice-blue: #e4f0f7;
+      --soft-white: #ffffff;
+      --warm-gray: #f3f5f7;
+      --text-dark: #1e2b37;
+      --text-muted: #4d6272;
+      --shadow-sm: 0 8px 20px rgba(0, 0, 0, 0.02), 0 4px 8px rgba(0, 0, 0, 0.03);
+      --shadow-md: 0 20px 30px -10px rgba(0, 0, 0, 0.08), 0 8px 16px -6px rgba(0, 0, 0, 0.04);
+      --radius-lg: 32px;
+      --radius-md: 20px;
+    }
+
+    /* ---------- BUTTONS ---------- */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      font-weight: 600;
+      font-size: 1rem;
+      padding: 14px 32px;
+      border-radius: 60px;
+      transition: all 0.25s ease;
+      cursor: pointer;
+      border: none;
+      background: transparent;
+    }
+
+    .btn-primary {
+      background: var(--maple-red);
+      color: white;
+      box-shadow: 0 10px 18px -8px rgba(217, 43, 43, 0.4);
+    }
+
+    .btn-primary:hover {
+      background: var(--maple-red-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 18px 24px -10px rgba(217, 43, 43, 0.5);
+    }
+
+    .btn-outline {
+      border: 2px solid var(--deep-navy);
+      color: var(--deep-navy);
+      font-weight: 600;
+    }
+
+    .btn-outline:hover {
+      background: var(--deep-navy);
+      color: white;
+      transform: translateY(-2px);
+    }
+
+    /* ---------- HEADER / NAV ---------- */
+    .site-header {
+      padding: 20px 0;
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.02);
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 700;
+      font-size: 1.7rem;
+      letter-spacing: -0.03em;
+      color: var(--deep-navy);
+    }
+
+    .logo i {
+      color: var(--maple-red);
+      font-size: 2rem;
+      transform: rotate(-5deg);
+    }
+
+    .logo span {
+      color: var(--maple-red);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2.2rem;
+      font-weight: 500;
+      color: var(--text-dark);
+    }
+
+    .nav-links a {
+      position: relative;
+      padding: 4px 0;
+      transition: color 0.2s;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--maple-red);
+      transition: width 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: var(--maple-red);
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .header-cta {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .header-cta .btn {
+      padding: 10px 24px;
+      font-size: 0.95rem;
+    }
+
+    .mobile-menu-btn {
+      display: none;
+      font-size: 1.8rem;
+      background: none;
+      border: none;
+      color: var(--deep-navy);
+      cursor: pointer;
+    }
+
+    /* ---------- HERO ---------- */
+    .hero {
+      padding: 60px 0 80px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '🍁';
+      position: absolute;
+      font-size: 25rem;
+      right: -5%;
+      bottom: -10%;
+      opacity: 0.03;
+      transform: rotate(15deg);
+      pointer-events: none;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 0.9fr;
+      align-items: center;
+      gap: 40px;
+    }
+
+    .hero-content h1 {
+      font-size: 3.8rem;
+      line-height: 1.15;
+      margin-bottom: 24px;
+      color: var(--deep-navy);
+    }
+
+    .hero-content h1 i {
+      color: var(--maple-red);
+      font-style: normal;
+    }
+
+    .hero-highlight {
+      display: inline-block;
+      background: linear-gradient(145deg, #d92b2b10, #d92b2b05);
+      padding: 0 12px;
+      border-radius: 12px;
+      color: var(--maple-red-dark);
+      border-left: 4px solid var(--maple-red);
+      font-weight: 600;
+    }
+
+    .hero-content p {
+      font-size: 1.2rem;
+      color: var(--text-muted);
+      max-width: 540px;
+      margin-bottom: 36px;
+      line-height: 1.6;
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 40px;
+      margin-top: 48px;
+    }
+
+    .stat-item h3 {
+      font-size: 2rem;
+      font-family: 'Inter', sans-serif;
+      font-weight: 700;
+      color: var(--deep-navy);
+      margin-bottom: 4px;
+      letter-spacing: -0.02em;
+    }
+
+    .stat-item p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-bottom: 0;
+    }
+
+    .hero-image {
+      background: var(--ice-blue);
+      border-radius: var(--radius-lg);
+      padding: 20px 20px 0 20px;
+      box-shadow: var(--shadow-md);
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.8);
+    }
+
+    .hero-image img {
+      border-radius: 24px 24px 0 0;
+      transform: scale(1.01);
+      transition: transform 0.4s;
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      aspect-ratio: 4 / 3.3;
+    }
+
+    .hero-image:hover img {
+      transform: scale(1.03);
+    }
+
+    .hero-badge {
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+      background: white;
+      padding: 12px 22px;
+      border-radius: 50px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      box-shadow: var(--shadow-sm);
+      font-weight: 600;
+      border: 1px solid #fff;
+    }
+
+    .hero-badge i {
+      color: var(--maple-red);
+      font-size: 1.3rem;
+    }
+
+    /* ---------- TRUST BADGES ---------- */
+    .trust-section {
+      padding: 24px 0 40px;
+    }
+
+    .trust-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 30px;
+      opacity: 0.75;
+      filter: grayscale(0.4);
+    }
+
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 600;
+      color: var(--deep-navy);
+      font-size: 1.2rem;
+    }
+
+    .trust-item i {
+      font-size: 1.8rem;
+      color: var(--maple-red);
+    }
+
+    /* ---------- SERVICES ---------- */
+    .services {
+      padding: 80px 0;
+      background: var(--soft-white);
+    }
+
+    .section-header {
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto 56px;
+    }
+
+    .section-header .tag {
+      display: inline-block;
+      background: var(--maple-red);
+      color: white;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 6px 18px;
+      border-radius: 40px;
+      margin-bottom: 20px;
+    }
+
+    .section-header h2 {
+      font-size: 2.7rem;
+      color: var(--deep-navy);
+      margin-bottom: 16px;
+    }
+
+    .section-header p {
+      color: var(--text-muted);
+      font-size: 1.15rem;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 28px;
+    }
+
+    .service-card {
+      background: var(--warm-gray);
+      border-radius: var(--radius-md);
+      padding: 36px 28px;
+      transition: all 0.3s;
+      border: 1px solid rgba(255, 255, 255, 0.8);
+      box-shadow: var(--shadow-sm);
+      text-align: left;
+    }
+
+    .service-card:hover {
+      transform: translateY(-8px);
+      background: white;
+      box-shadow: var(--shadow-md);
+      border-color: #fff;
+    }
+
+    .service-icon {
+      width: 60px;
+      height: 60px;
+      background: white;
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      color: var(--maple-red);
+      margin-bottom: 24px;
+      box-shadow: 0 8px 16px -10px rgba(0, 0, 0, 0.1);
+      border: 1px solid #eef2f6;
+    }
+
+    .service-card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 12px;
+      color: var(--deep-navy);
+    }
+
+    .service-card p {
+      color: var(--text-muted);
+      font-size: 1rem;
+      margin-bottom: 24px;
+    }
+
+    .service-link {
+      font-weight: 600;
+      color: var(--maple-red);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.95rem;
+    }
+
+    .service-link i {
+      transition: transform 0.2s;
+    }
+
+    .service-card:hover .service-link i {
+      transform: translateX(5px);
+    }
+
+    /* ---------- HOW IT WORKS ---------- */
+    .how-it-works {
+      padding: 70px 0;
+      background: var(--ice-blue);
+    }
+
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+      margin-top: 48px;
+    }
+
+    .step-item {
+      text-align: center;
+      position: relative;
+    }
+
+    .step-number {
+      width: 70px;
+      height: 70px;
+      background: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--maple-red);
+      margin: 0 auto 24px;
+      box-shadow: var(--shadow-sm);
+      border: 2px solid white;
+      font-family: 'Playfair Display', serif;
+    }
+
+    .step-item h4 {
+      font-size: 1.4rem;
+      margin-bottom: 10px;
+      color: var(--deep-navy);
+    }
+
+    .step-item p {
+      color: var(--text-muted);
+      max-width: 280px;
+      margin: 0 auto;
+    }
+
+    /* ---------- TESTIMONIALS ---------- */
+    .testimonials {
+      padding: 80px 0;
+      background: var(--soft-white);
+    }
+
+    .testimonial-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin-top: 48px;
+    }
+
+    .testimonial-card {
+      background: var(--warm-gray);
+      border-radius: var(--radius-md);
+      padding: 32px 28px;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid #fff;
+      transition: 0.2s;
+    }
+
+    .testimonial-card:hover {
+      background: white;
+    }
+
+    .stars {
+      color: #f5b342;
+      margin-bottom: 18px;
+      letter-spacing: 2px;
+    }
+
+    .testimonial-card p {
+      font-size: 1.05rem;
+      margin-bottom: 24px;
+      color: var(--text-dark);
+      font-style: italic;
+      line-height: 1.6;
+    }
+
+    .client-info {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .client-avatar {
+      width: 48px;
+      height: 48px;
+      background: var(--maple-red);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      font-size: 1.2rem;
+      font-family: 'Playfair Display', serif;
+    }
+
+    .client-info h5 {
+      font-weight: 700;
+      font-size: 1rem;
+      margin-bottom: 2px;
+    }
+
+    .client-info span {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    /* ---------- CTA SECTION ---------- */
+    .cta-section {
+      padding: 60px 0 90px;
+    }
+
+    .cta-card {
+      background: var(--deep-navy);
+      border-radius: var(--radius-lg);
+      padding: 64px 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 40px;
+      flex-wrap: wrap;
+      color: white;
+      box-shadow: var(--shadow-md);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-card::after {
+      content: '🍁';
+      position: absolute;
+      font-size: 16rem;
+      right: -30px;
+      bottom: -50px;
+      opacity: 0.08;
+      transform: rotate(10deg);
+      pointer-events: none;
+    }
+
+    .cta-text h2 {
+      font-size: 2.4rem;
+      margin-bottom: 12px;
+      color: white;
+    }
+
+    .cta-text p {
+      opacity: 0.8;
+      max-width: 480px;
+      font-size: 1.1rem;
+    }
+
+    .cta-actions {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .cta-actions .btn-primary {
+      background: white;
+      color: var(--deep-navy);
+      box-shadow: none;
+    }
+
+    .cta-actions .btn-primary:hover {
+      background: #f0f4f8;
+    }
+
+    .cta-actions .btn-outline {
+      border-color: white;
+      color: white;
+    }
+
+    .cta-actions .btn-outline:hover {
+      background: white;
+      color: var(--deep-navy);
+    }
+
+    /* ---------- FOOTER ---------- */
+    .site-footer {
+      padding: 64px 0 28px;
+      background: var(--soft-white);
+      border-top: 1px solid #e6ecf2;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1.2fr;
+      gap: 48px;
+      margin-bottom: 48px;
+    }
+
+    .footer-brand .logo {
+      margin-bottom: 18px;
+      font-size: 1.8rem;
+    }
+
+    .footer-brand p {
+      color: var(--text-muted);
+      max-width: 280px;
+      line-height: 1.6;
+      margin-bottom: 24px;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 16px;
+    }
+
+    .social-links a {
+      background: var(--warm-gray);
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--deep-navy);
+      transition: 0.2s;
+    }
+
+    .social-links a:hover {
+      background: var(--maple-red);
+      color: white;
+      transform: translateY(-3px);
+    }
+
+    .footer-column h4 {
+      font-family: 'Inter', sans-serif;
+      font-weight: 700;
+      font-size: 1.1rem;
+      margin-bottom: 20px;
+      color: var(--deep-navy);
+    }
+
+    .footer-column ul {
+      list-style: none;
+    }
+
+    .footer-column li {
+      margin-bottom: 12px;
+    }
+
+    .footer-column a {
+      color: var(--text-muted);
+      transition: 0.2s;
+    }
+
+    .footer-column a:hover {
+      color: var(--maple-red);
+    }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 18px;
+      padding-top: 28px;
+      border-top: 1px solid #eef2f6;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .footer-bottom i {
+      color: var(--maple-red);
+      margin: 0 4px;
+    }
+
+    /* ---------- RESPONSIVE ---------- */
+    @media (max-width: 1024px) {
+      .hero-content h1 {
+        font-size: 3rem;
+      }
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 850px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+      .hero-content p {
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .hero-stats {
+        justify-content: center;
+      }
+      .hero-content h1 {
+        font-size: 2.8rem;
+      }
+      .steps-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+      .nav-links {
+        display: none;
+      }
+      .mobile-menu-btn {
+        display: block;
+      }
+      .header-cta .btn-outline {
+        display: none;
+      }
+      .cta-card {
+        flex-direction: column;
+        text-align: center;
+        padding: 48px 28px;
+      }
+      .cta-actions {
+        justify-content: center;
+      }
+      .trust-grid {
+        justify-content: center;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .hero-content h1 {
+        font-size: 2.2rem;
+      }
+      .hero-stats {
+        flex-direction: column;
+        gap: 20px;
+        align-items: center;
+      }
+      .section-header h2 {
+        font-size: 2rem;
+      }
+      .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 36px;
+      }
+      .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+      }
+      .btn {
+        padding: 12px 24px;
+        font-size: 0.95rem;
+      }
+      .header-cta .btn-primary {
+        padding: 8px 18px;
+        font-size: 0.85rem;
+      }
+      .logo {
+        font-size: 1.4rem;
+      }
+      .logo i {
+        font-size: 1.6rem;
+      }
+    }
+
+    /* Demo note (for client presentation) */
+    .demo-note {
+      text-align: center;
+      background: #fdf6e3;
+      color: #6b5e3b;
+      font-size: 0.85rem;
+      padding: 8px 16px;
+      border-radius: 40px;
+      width: fit-content;
+      margin: 20px auto 0;
+      border: 1px dashed #d9c48b;
+      letter-spacing: 0.3px;
+    }
+  </style>
+</head>
+<body>
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="logo">
+        <i class="fas fa-leaf"></i>
+        <div>Maple<span>Clean</span></div>
+      </div>
+      <nav class="nav-links">
+        <a href="#">Services</a>
+        <a href="#">Why us</a>
+        <a href="#">Pricing</a>
+        <a href="#">Reviews</a>
+        <a href="#">Contact</a>
+      </nav>
+      <div class="header-cta">
+        <a href="#" class="btn btn-outline"><i class="fas fa-phone-alt"></i> 1-800-MAPLE</a>
+        <a href="#" class="btn btn-primary">Book now</a>
+        <button class="mobile-menu-btn" aria-label="Menu"><i class="fas fa-bars"></i></button>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container hero-grid">
+      <div class="hero-content">
+        <h1>
+          Canada’s <i>trusted</i> <br>
+          <span class="hero-highlight">residential & commercial</span> cleaning
+        </h1>
+        <p>
+          Eco‑friendly, fully insured, and proudly Canadian. We bring the shine to homes and offices from coast to coast — with a maple leaf guarantee.
+        </p>
+        <div style="display: flex; gap: 16px; flex-wrap: wrap; justify-content: flex-start;">
+          <a href="#" class="btn btn-primary"><i class="fas fa-calendar-check"></i> Get a free quote</a>
+          <a href="#" class="btn btn-outline"><i class="fas fa-play"></i> See our work</a>
+        </div>
+        <div class="hero-stats">
+          <div class="stat-item">
+            <h3>4.9★</h3>
+            <p>2,400+ reviews</p>
+          </div>
+          <div class="stat-item">
+            <h3>15k+</h3>
+            <p>happy clients</p>
+          </div>
+          <div class="stat-item">
+            <h3>100%</h3>
+            <p>Canadian owned</p>
+          </div>
+        </div>
+      </div>
+      <div class="hero-image">
+        <img src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?q=80&w=1770&auto=format&fit=crop" alt="Professional cleaner in a bright Canadian home">
+        <div class="hero-badge">
+          <i class="fas fa-maple-leaf"></i>
+          <span>100% Canadian owned</span>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="demo-note">
+        <i class="fas fa-paint-brush"></i> Demo presentation — maple leaf design & responsive layout
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST BADGES -->
+  <div class="trust-section container">
+    <div class="trust-grid">
+      <div class="trust-item"><i class="fas fa-shield-alt"></i> Insured & bonded</div>
+      <div class="trust-item"><i class="fas fa-leaf"></i> Eco‑friendly</div>
+      <div class="trust-item"><i class="fas fa-star"></i> Top rated 2025</div>
+      <div class="trust-item"><i class="fas fa-truck"></i> All provinces</div>
+    </div>
+  </div>
+
+  <!-- SERVICES -->
+  <section class="services">
+    <div class="container">
+      <div class="section-header">
+        <span class="tag">What we do</span>
+        <h2>Cleaning that feels <i>Canadian</i></h2>
+        <p>From cozy condos to corporate offices — we bring the fresh, crisp air of the north.</p>
+      </div>
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-icon"><i class="fas fa-home"></i></div>
+          <h3>Home cleaning</h3>
+          <p>Weekly, bi‑weekly, or one‑time deep cleans. We treat your home like our own.</p>
+          <a href="#" class="service-link">Learn more <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="service-card">
+          <div class="service-icon"><i class="fas fa-building"></i></div>
+          <h3>Office & commercial</h3>
+          <p>Reliable, discreet, and after‑hours service for offices, clinics, and retail.</p>
+          <a href="#" class="service-link">Learn more <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="service-card">
+          <div class="service-icon"><i class="fas fa-spray-can-sparkles"></i></div>
+          <h3>Move in / out</h3>
+          <p>Deposit‑back guaranteed. We deep clean every corner so you can move stress‑free.</p>
+          <a href="#" class="service-link">Learn more <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="service-card">
+          <div class="service-icon"><i class="fas fa-wind"></i></div>
+          <h3>Eco‑deep clean</h3>
+          <p>Green products, HEPA vacuums, and a fresh, allergen‑free finish.</p>
+          <a href="#" class="service-link">Learn more <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="how-it-works">
+    <div class="container">
+      <div class="section-header">
+        <span class="tag">Simple process</span>
+        <h2>Sparkling in 3 easy steps</h2>
+        <p>Booking with MapleClean takes less than 2 minutes.</p>
+      </div>
+      <div class="steps-grid">
+        <div class="step-item">
+          <div class="step-number">1</div>
+          <h4>Get a quote</h4>
+          <p>Tell us about your space. We’ll send a transparent, no‑surprise price.</p>
+        </div>
+        <div class="step-item">
+          <div class="step-number">2</div>
+          <h4>Pick a time</h4>
+          <p>Choose a day and time that works for you — evenings & weekends available.</p>
+        </div>
+        <div class="step-item">
+          <div class="step-number">3</div>
+          <h4>We clean, you relax</h4>
+          <p>Our vetted pros arrive with everything needed. Enjoy your fresh space!</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="testimonials">
+    <div class="container">
+      <div class="section-header">
+        <span class="tag">Reviews</span>
+        <h2>Loved by Canadians <i>everywhere</i></h2>
+        <p>From Vancouver to Halifax — real stories from real clients.</p>
+      </div>
+      <div class="testimonial-grid">
+        <div class="testimonial-card">
+          <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+          <p>“MapleClean transformed our condo. The team was punctual, friendly, and left the place spotless. We’re now weekly clients!”</p>
+          <div class="client-info">
+            <div class="client-avatar">SM</div>
+            <div><h5>Sarah M.</h5><span>Toronto, ON</span></div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+          <p>“Our office has never looked better. Professional, reliable, and they always go the extra mile. Highly recommended.”</p>
+          <div class="client-info">
+            <div class="client-avatar">JL</div>
+            <div><h5>James L.</h5><span>Vancouver, BC</span></div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+          <p>“The move‑out clean saved my deposit. They were thorough, polite, and used eco‑friendly products. A+ service.”</p>
+          <div class="client-info">
+            <div class="client-avatar">AP</div>
+            <div><h5>Amélie P.</h5><span>Montréal, QC</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA SECTION -->
+  <section class="cta-section">
+    <div class="container">
+      <div class="cta-card">
+        <div class="cta-text">
+          <h2>Ready for a fresh start?</h2>
+          <p>Book in 2 minutes. We’ll bring the maple‑fresh shine to your space.</p>
+        </div>
+        <div class="cta-actions">
+          <a href="#" class="btn btn-primary"><i class="fas fa-calendar-alt"></i> Book online</a>
+          <a href="#" class="btn btn-outline"><i class="fas fa-phone"></i> Call us</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="logo"><i class="fas fa-leaf"></i> Maple<span>Clean</span></div>
+          <p>Canada’s premium cleaning service — trusted since 2012. We’re proud to be 100% Canadian owned and operated.</p>
+          <div class="social-links">
+            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+        </div>
+        <div class="footer-column">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="#">Home cleaning</a></li>
+            <li><a href="#">Office cleaning</a></li>
+            <li><a href="#">Move in / out</a></li>
+            <li><a href="#">Deep clean</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="#">About us</a></li>
+            <li><a href="#">Careers</a></li>
+            <li><a href="#">Reviews</a></li>
+            <li><a href="#">Blog</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h4>Contact</h4>
+          <ul>
+            <li><i class="fas fa-phone-alt" style="margin-right: 8px; color: var(--maple-red);"></i> 1-800-MAPLE (6275)</li>
+            <li><i class="fas fa-envelope" style="margin-right: 8px; color: var(--maple-red);"></i> hello@mapleclean.ca</li>
+            <li><i class="fas fa-map-pin" style="margin-right: 8px; color: var(--maple-red);"></i> Serving all major cities</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div>© 2025 MapleClean Inc. All rights reserved. Proudly <i class="fas
